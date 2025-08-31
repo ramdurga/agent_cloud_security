@@ -6,7 +6,7 @@ from collections import deque
 import threading
 import time
 from src.models.data_models import NetworkEvent, UserBehaviorEvent, AnomalyDetection
-from src.agents.anomaly_detector import AnomalyDetectionAgent
+from src.agents.anomaly_detector_pydantic import AnomalyDetectionAgent
 
 
 class RealTimeProcessor:

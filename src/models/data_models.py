@@ -2,7 +2,6 @@ from datetime import datetime
 from typing import Dict, List, Optional, Any, Tuple
 from pydantic import BaseModel, Field
 from enum import Enum
-import numpy as np
 
 
 class EventType(str, Enum):
@@ -33,11 +32,15 @@ class NetworkEvent(BaseModel):
     duration: float
     packet_count: int
     flags: Optional[str] = None
+    source_host: Optional[str] = None
+    destination_host: Optional[str] = None
+    service: Optional[str] = None
     
     
 class UserBehaviorEvent(BaseModel):
     timestamp: datetime
     user_id: str
+    user_name: Optional[str] = None
     entity_id: str
     event_type: EventType
     action: str

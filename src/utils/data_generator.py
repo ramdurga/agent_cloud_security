@@ -44,6 +44,19 @@ class DataGenerator:
             "UDP": ["DNS", "DHCP", "SNMP", "NTP"]
         }
         
+    def generate_event(self) -> Dict[str, Any]:
+        """Generate a random event (network or behavior) with low anomaly rate"""
+        if random.random() < 0.5:
+            if random.random() < 0.95:  # 95% normal events
+                return self.generate_normal_network_event()
+            else:
+                return self.generate_suspicious_network_event()
+        else:
+            if random.random() < 0.95:  # 95% normal events
+                return self.generate_normal_behavior_event()
+            else:
+                return self.generate_suspicious_behavior_event()
+    
     def generate_normal_network_event(self) -> Dict[str, Any]:
         source_ip = random.choice(list(self.normal_ips.keys()))
         dest_ip = random.choice(list(self.normal_ips.keys()))
@@ -331,6 +344,20 @@ class DataGenerator:
             })
         
         return events
+    
+    def generate_attack_pattern(self, attack_type: str = 'ddos') -> List[Dict[str, Any]]:
+        """Generate attack pattern events based on type"""
+        if attack_type == 'ddos':
+            return self.generate_network_attack_scenario()
+        elif attack_type == 'privilege_escalation':
+            return self.generate_ueba_attack_scenario()
+        elif attack_type == 'data_exfiltration':
+            return self.generate_attack_scenario('data_exfiltration')
+        elif attack_type == 'brute_force':
+            return self.generate_attack_scenario('brute_force')
+        else:
+            # Default to network attack
+            return self.generate_network_attack_scenario()
     
     def generate_attack_scenario(self, scenario_type: str = 'data_exfiltration') -> List[Dict[str, Any]]:
         events = []

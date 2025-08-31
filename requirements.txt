@@ -6,3 +6,12 @@ pydantic>=2.0.0
 matplotlib>=3.7.0
 plotly>=5.15.0
 streamlit>=1.25.0
+
+# LangChain and LLM dependencies
+langchain>=0.1.20
+langchain-community>=0.0.38
+langchain-anthropic>=0.1.0
+anthropic>=0.25.0
+faiss-cpu>=1.7.4
+tiktoken>=0.5.0
+python-dotenv>=1.0.0

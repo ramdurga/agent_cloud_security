@@ -6,7 +6,7 @@ from plotly.subplots import make_subplots
 from datetime import datetime, timedelta
 import asyncio
 import json
-from src.pipeline.real_time_processor import RealTimeProcessor
+from src.pipeline.processor_no_agent import RealTimeProcessor
 from src.utils.data_generator import DataGenerator
 import time
 from collections import deque, defaultdict
